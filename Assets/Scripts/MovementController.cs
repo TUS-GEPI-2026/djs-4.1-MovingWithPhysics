@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 
 public class movementController : MonoBehaviour
@@ -11,7 +12,12 @@ public class movementController : MonoBehaviour
     public float jumpForce;
     public float sprintSpeed = 10;
 
+    Vector3 _startPosition;
 
+    void Start()
+    {
+        _startPosition = transform.position;
+    }
 
 
 
@@ -19,6 +25,7 @@ public class movementController : MonoBehaviour
     {
         MoveLeftAndRight();
         Jump();
+        CheckIfFallen();
     }
     void MoveLeftAndRight()
     {
@@ -39,15 +46,41 @@ public class movementController : MonoBehaviour
             theRB.linearVelocity = new Vector2(-currentSpeed, theRB.linearVelocity.y);
             aSR.flipX = true;
         }
-        
-        }
-    
 
-        void Jump()
+    }
+
+    bool _isGrounded;
+    void Jump()
+    {
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            if (Keyboard.current.spaceKey.wasPressedThisFrame)
+            if (_isGrounded)
+                theRB.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            Debug.Log("Jump! Steve's velocity is " + theRB.linearVelocity);
+        }
+    }
+
+
+
+void OnCollisionEnter2D(Collision2D collision)
+{
+    Debug.Log("Steve touched " + collision.gameObject.name);
+    _isGrounded = true;
+}
+void OnCollisionExit2D(Collision2D collision)
+{
+    Debug.Log("Steve stopped touching " + collision.gameObject.name);
+    _isGrounded = false;
+}
+
+
+void CheckIfFallen()
+    {
+        if (transform.position.y < -10)
         {
-            theRB.AddForce(Vector2.up * jumpForce);
+            transform.position = _startPosition;
+            theRB.linearVelocity = Vector2.zero;
         }
     }
 }
+    
