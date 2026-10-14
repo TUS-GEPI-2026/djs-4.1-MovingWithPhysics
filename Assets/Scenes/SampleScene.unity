@@ -902,8 +902,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::movementController
   theRB: {fileID: 934556762}
+  aSR: {fileID: 934556763}
   speed: 3
   jumpForce: 200
+  sprintSpeed: 10
 --- !u!1 &1011746139
 GameObject:
   m_ObjectHideFlags: 0

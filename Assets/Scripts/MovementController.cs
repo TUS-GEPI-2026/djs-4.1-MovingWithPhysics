@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 
 public class movementController : MonoBehaviour
 {
     public Rigidbody2D theRB;
+    public SpriteRenderer aSR;
     public float speed;
     public float jumpForce;
     public float sprintSpeed = 10;
@@ -30,10 +32,12 @@ public class movementController : MonoBehaviour
         if (Keyboard.current.rightArrowKey.isPressed)
         {
             theRB.linearVelocity = new Vector2(currentSpeed, theRB.linearVelocity.y);
+            aSR.flipX = false;
         }
         else if (Keyboard.current.leftArrowKey.isPressed)
         {
             theRB.linearVelocity = new Vector2(-currentSpeed, theRB.linearVelocity.y);
+            aSR.flipX = true;
         }
         
         }
