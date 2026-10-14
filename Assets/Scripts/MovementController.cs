@@ -25,23 +25,21 @@ public class movementController : MonoBehaviour
 
         if (Keyboard.current.rightArrowKey.isPressed)
         {
-            theRB.linearVelocity = new Vector2(5, theRB.linearVelocity.y);
+            theRB.linearVelocity = new Vector2(speed, theRB.linearVelocity.y);
         }
         else if (Keyboard.current.leftArrowKey.isPressed)
         {
-            theRB.linearVelocity = new Vector2(-5, theRB.linearVelocity.y);
+            theRB.linearVelocity = new Vector2(-speed, theRB.linearVelocity.y);
         }
-        else
-        {
-            theRB.linearVelocity = new Vector2(0, theRB.linearVelocity.y);
+        
         }
-    }
+    
 
         void Jump()
         {
             if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            theRB.AddForce(Vector2.up * 200);
+            theRB.AddForce(Vector2.up * jumpForce);
         }
     }
 }
