@@ -11,6 +11,9 @@ public class movementController : MonoBehaviour
     public float speed;
     public float jumpForce;
     public float sprintSpeed = 10;
+    public bool isGrounded;
+    public AudioSource steveAudioSource;
+
 
     Vector3 _startPosition;
 
@@ -52,26 +55,36 @@ public class movementController : MonoBehaviour
     bool _isGrounded;
     void Jump()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        if (Keyboard.current.spaceKey.wasPressedThisFrame == true && isGrounded == true)
         {
-            if (_isGrounded)
-                theRB.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            theRB.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             Debug.Log("Jump! Steve's velocity is " + theRB.linearVelocity);
         }
     }
 
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Steve touched " + collision.gameObject.name);
+        if (collision.gameObject.name == "GroundPlatform")
+        {
+            isGrounded = true;
+        }
 
-void OnCollisionEnter2D(Collision2D collision)
-{
-    Debug.Log("Steve touched " + collision.gameObject.name);
-    _isGrounded = true;
-}
+        if (collision.gameObject.CompareTag("Wall") == true)
+            steveAudioSource.Play();
+    }
+
+
+
 void OnCollisionExit2D(Collision2D collision)
-{
-    Debug.Log("Steve stopped touching " + collision.gameObject.name);
-    _isGrounded = false;
-}
+    {
+        Debug.Log("Steve stopped touching " + collision.gameObject.name);
+        if (collision.gameObject.name == "GroundPlatform")
+        {
+            isGrounded = false;
+        }
+    }
 
 
     void OnTriggerEnter2D(Collider2D other)
