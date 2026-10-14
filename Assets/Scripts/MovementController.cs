@@ -74,7 +74,24 @@ void OnCollisionExit2D(Collision2D collision)
 }
 
 
-void CheckIfFallen()
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Coin") == true)
+        {
+            Debug.Log("Coin collected!");
+            Destroy(other.gameObject);
+        }
+        else if (other.gameObject.CompareTag("Spike") == true)
+        {
+            transform.position = _startPosition;
+            theRB.linearVelocity = Vector2.zero;
+        }
+    }
+
+
+
+
+    void CheckIfFallen()
     {
         if (transform.position.y < -10)
         {
