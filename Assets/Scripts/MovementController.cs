@@ -7,7 +7,7 @@ public class movementController : MonoBehaviour
     public Rigidbody2D theRB;
     public float speed;
     public float jumpForce;
-
+    public float sprintSpeed = 10;
 
 
 
@@ -21,15 +21,19 @@ public class movementController : MonoBehaviour
     void MoveLeftAndRight()
     {
 
-
+        float currentSpeed = speed;
+        if (Keyboard.current.leftShiftKey.isPressed)
+        {
+            currentSpeed = sprintSpeed;
+        }
 
         if (Keyboard.current.rightArrowKey.isPressed)
         {
-            theRB.linearVelocity = new Vector2(speed, theRB.linearVelocity.y);
+            theRB.linearVelocity = new Vector2(currentSpeed, theRB.linearVelocity.y);
         }
         else if (Keyboard.current.leftArrowKey.isPressed)
         {
-            theRB.linearVelocity = new Vector2(-speed, theRB.linearVelocity.y);
+            theRB.linearVelocity = new Vector2(-currentSpeed, theRB.linearVelocity.y);
         }
         
         }
