@@ -1,11 +1,11 @@
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class SwitchController : MonoBehaviour
 {
 
 
     public bool switchActive;
-
+    public SpriteRenderer aSR;
 
     void Start()
     {
@@ -13,10 +13,25 @@ public class SwitchController : MonoBehaviour
     }
 
 
+    
+
     void Update()
     {
-
+        CheckSwitchKeys();
     }
+
+    void CheckSwitchKeys()
+    {
+        if (Keyboard.current.upArrowKey.wasPressedThisFrame == true && switchActive == true)
+        {
+            aSR.color = Color.green;
+        }
+        else if (Keyboard.current.downArrowKey.wasPressedThisFrame == true && switchActive == true)
+        {
+            aSR.color = Color.white;
+        }
+    }
+
 
 
     void OnTriggerEnter2D(Collider2D other)
