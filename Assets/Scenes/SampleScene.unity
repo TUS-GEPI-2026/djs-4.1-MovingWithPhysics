@@ -334,7 +334,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7179711476628266032, guid: 13202c7b958e2d340a7ae83dc2e8259e, type: 3}
       propertyPath: m_Name
-      value: Radio
+      value: Radio Switch
       objectReference: {fileID: 0}
     - target: {fileID: 7179711476628266034, guid: 13202c7b958e2d340a7ae83dc2e8259e, type: 3}
       propertyPath: m_LocalScale.x
@@ -398,6 +398,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7179711476628266032, guid: 13202c7b958e2d340a7ae83dc2e8259e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1263576885}
+    - targetCorrespondingSourceObject: {fileID: 7179711476628266032, guid: 13202c7b958e2d340a7ae83dc2e8259e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1263576886}
+    - targetCorrespondingSourceObject: {fileID: 7179711476628266032, guid: 13202c7b958e2d340a7ae83dc2e8259e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1263576887}
   m_SourcePrefab: {fileID: 100100000, guid: 13202c7b958e2d340a7ae83dc2e8259e, type: 3}
 --- !u!1001 &418506741
 PrefabInstance:
@@ -1587,6 +1593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9342c74ef19ed8429fabc6fc45564cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwitchController
+  radioController: {fileID: 1263576887}
   switchActive: 0
   aSR: {fileID: 1263576883}
 --- !u!212 &1263576883 stripped
@@ -1640,6 +1647,116 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.56, y: 2.56}
   m_EdgeRadius: 0
+--- !u!82 &1263576886
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263576881}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 66bb7cdff89a95647822ec05afff4529, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1263576887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263576881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c757353738c87b949a8551f73435651b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RadioController
+  radioAudioSource: {fileID: 1263576886}
 --- !u!1001 &1334993609
 PrefabInstance:
   m_ObjectHideFlags: 0
